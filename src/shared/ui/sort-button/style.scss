@@ -10,12 +10,14 @@
 
   transition: 0.3s;
   cursor: pointer;
+  user-select: none;
 
   &:not(&--active):hover{
     background-color: $color-hover;
   }
 
   &--active {
+    background-color: $color-gray-extra-light;
     color: $color-secondary;
   }
 }

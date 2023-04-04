@@ -1,0 +1,16 @@
+.sort-icon {
+  color: $color-gray;
+
+  &__arrow-down,
+  &__arrow-up {
+    transition: $transition-hover;
+  }
+
+  &--desc &__arrow-down {
+    color: $color-secondary;
+  }
+
+  &--asc &__arrow-up {
+    color: $color-secondary;
+  }
+}

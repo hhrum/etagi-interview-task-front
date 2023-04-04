@@ -14,6 +14,7 @@ module.exports = {
   endOfLine: 'auto',
 
   importOrder: [
+    "^store$",
     "^app/(.*)$",
     "^processes/(.*)$",
     "^pages/(.*)$",
