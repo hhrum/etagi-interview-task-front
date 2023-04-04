@@ -1,0 +1,22 @@
+$sizes: (
+  '16': (
+    'fz': 16px,
+    'lh': 24px,
+  ),
+  '20': (
+    'fz': 20px,
+    'lh': 32px,
+  ),
+);
+
+@mixin typography($fz, $lh) {
+  font-size: $fz;
+  line-height: $lh;
+}
+
+@mixin typographyBySize($sizeName) {
+  $size: map-get($sizes, $sizeName);
+  $fz: map-get($size, 'fz');
+  $lh: map-get($size, 'lh');
+  @include typography($fz, $lh);
+}

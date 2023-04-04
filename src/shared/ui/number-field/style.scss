@@ -1,0 +1,19 @@
+.number-field {
+  width: 80px;
+  padding: 4px 8px;
+  border: 1px solid $color-gray-extra-light;
+  border-radius: 12px;
+
+  @include typographyBySize('16');
+  text-align: center;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}

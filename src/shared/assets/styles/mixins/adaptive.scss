@@ -1,0 +1,29 @@
+@mixin adaptiveSm {
+  @media screen and (min-width: $breakpoint-sm) {
+    @content
+  }
+}
+
+@mixin adaptiveMd {
+  @media screen and (min-width: $breakpoint-md) {
+    @content
+  }
+}
+
+@mixin adaptiveLg {
+  @media screen and (min-width: $breakpoint-lg) {
+    @content
+  }
+}
+
+@mixin adaptiveXl {
+  @media screen and (min-width: $breakpoint-xl) {
+    @content
+  }
+}
+
+@mixin adaptiveXxl {
+  @media screen and (min-width: $breakpoint-xxl) {
+    @content
+  }
+}

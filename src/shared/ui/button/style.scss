@@ -1,0 +1,38 @@
+.button {
+  padding: 4px 8px;
+  border-radius: 8px;
+
+  border: medium none;
+  border-spacing: 0;
+  margin: 0;
+
+  @include flexibleRow(4px);
+
+  transition: $transition-hover;
+  cursor: pointer;
+
+  &--primary {
+    background-color: $color-primary;
+    color: $color-white;
+  }
+
+  &--secondary {
+    background-color: $color-gray-extra-light;
+    color: $color-gray;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    &--primary {
+      &:hover {
+        background-color: $color-primary-dark;
+      }
+    }
+
+    &--secondary {
+      &:hover {
+        background-color: $color-secondary;
+        color: $color-white;
+      }
+    }
+  }
+}

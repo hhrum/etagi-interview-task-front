@@ -1,0 +1,5 @@
+.filter-flats {
+  &__button {
+    @include flexible(center, center);
+  }
+}

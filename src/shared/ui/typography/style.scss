@@ -1,0 +1,7 @@
+.typography {
+  @each $name, $size in $sizes {
+    &--#{$name} {
+      @include typographyBySize($name);
+    }
+  }
+}

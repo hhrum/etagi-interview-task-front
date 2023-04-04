@@ -1,0 +1,39 @@
+$color-black: #111;
+$color-white: #FFF;
+$color-hover: #F1F1F1;
+
+$color-gray-extra-light: #EDEDED;
+$color-gray-light: #B9B9B9;
+$color-gray: #A7A7A7;
+$color-gray-dark: #969696;
+
+$color-primary-extra-light: #F0D3D3;
+$color-primary-light: #C14E4E;
+$color-primary: #B22222;
+$color-primary-dark: #A01F1F;
+
+$color-secondary-extra-light: #EDEDE;
+$color-secondary-light: #B9B9B9;
+$color-secondary: #2A72EE;
+$color-secondary-dark: #969696;
+
+$colors: (
+  'color-black': $color-black,
+  'color-white': $color-white,
+  'color-hover': $color-hover,
+
+  'color-gray-extra-light': $color-gray-extra-light,
+  'color-gray-light': $color-gray-light,
+  'color-gray': $color-gray,
+  'color-gray-dark': $color-gray-dark,
+
+  'color-primary-extra-light': $color-primary-extra-light,
+  'color-primary-light': $color-primary-light,
+  'color-primary': $color-primary,
+  'color-primary-dark': $color-primary-dark,
+
+  'color-secondary-extra-light': $color-secondary-light,
+  'color-secondary-light': $color-secondary-light,
+  'color-secondary': $color-secondary,
+  'color-secondary-dark': $color-secondary-dark,
+)

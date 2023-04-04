@@ -1,0 +1,36 @@
+$min-width: 240px;
+$max-width: 320px;
+
+.flat-card {
+  min-width: $min-width;
+  width: 100%;
+
+  @include flexibleColumn(12px);
+
+  &__content {
+    width: 100%;
+
+    @include flexibleRow(12px)
+  }
+
+  &__layout-image {
+    background-color: $color-gray-extra-light;
+    width: 100%;
+    min-height: 200px;
+    border-radius: 16px;
+    overflow: hidden;
+
+    object-fit: contain;
+  }
+
+  &__info {
+    flex: 1 0;
+    @include flexibleColumn();
+  }
+
+  &__footer {
+    width: 100%;
+
+    @include flexibleRow(8px, flex-end, space-between);
+  }
+}

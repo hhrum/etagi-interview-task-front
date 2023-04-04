@@ -1,0 +1,30 @@
+.filter-button {
+  padding: 4px 8px;
+  border: 1px solid $color-gray-extra-light;
+  border-radius: 12px;
+
+  @include flexibleRow(4px, center);
+  
+  transition: $transition-hover;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-hover;
+  }
+
+  &__title {
+    color: $color-gray;
+  }
+
+  &__count {
+    background-color: $color-primary-light;
+    width: 20px;
+    height: 20px;
+    border-radius: 12px;
+
+    @include flexible(center, center);
+
+    color: $color-white;
+    @include typography(12px, 12px)
+  }
+}

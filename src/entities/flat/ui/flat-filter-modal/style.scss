@@ -1,0 +1,29 @@
+.flat-filter-modal-wrapper {
+  padding: 0;
+
+  @include flexible(stretch, flex-start);
+}
+
+.flat-filter-modal {
+  width: 360px;
+  border-radius: 0;
+
+  @include gap(24px);
+
+  &__header {
+    @include flexibleRow(8px, center, space-between);
+  }
+
+  &__filters {
+    @include flexibleColumn(12px);
+  }
+
+  &__footer {
+    @include flexibleColumn(8px, stretch);
+  }
+
+  &__button {
+    width: 100%;
+    @include flexible(center, center);
+  }
+}

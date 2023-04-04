@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ExportableFileTemplateSettings">
+    <default_templates>
+      <template name="TS FSD Slice.ts" file-name="${NAME}/index" reformat="true" live-template-enabled="false">
+        <template name="TS FSD Slice.ts.child.0.ts" file-name="${NAME}/ui/index" reformat="true" live-template-enabled="false" />
+      </template>
+      <template name="TS FSD Slice.ts.child.0.ts" file-name="${NAME}/ui/index" reformat="true" live-template-enabled="false" />
+      <template name="TSX Component Folder.tsx" file-name="${NAME}/index" reformat="true" live-template-enabled="false">
+        <template name="TSX Component Folder.tsx.child.0.scss" file-name="${NAME}/style" reformat="true" live-template-enabled="false" />
+      </template>
+      <template name="TSX Component Folder.tsx.child.0.scss" file-name="${NAME}/style" reformat="true" live-template-enabled="false" />
+    </default_templates>
+  </component>
+</project>

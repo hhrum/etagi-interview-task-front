@@ -1,0 +1,51 @@
+.flats-list {
+  width: 100%;
+  margin: 0 auto;
+  padding: 16px;
+
+  @include flexibleColumn(16px);
+
+  @include adaptiveSm {
+    width: 100%;
+    max-width: calc(320px * 2);
+  }
+
+  @include adaptiveLg {
+    max-width: calc(320px * 3);
+  }
+
+  @include adaptiveXxl {
+    max-width: calc(320px * 4);
+  }
+
+  &__tools {
+    @include flexibleColumn(8px);
+
+    @include adaptiveSm {
+      @include flexibleRow(8px, normal, space-between);
+    }
+  }
+
+  &__items {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include adaptiveSm {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include adaptiveLg {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include adaptiveXxl {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  &__item {
+    flex: 1 0;
+  }
+}

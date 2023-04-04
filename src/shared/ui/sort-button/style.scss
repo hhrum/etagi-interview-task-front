@@ -1,0 +1,21 @@
+.sort-button {
+  width: max-content;
+  padding: 4px 8px;
+  border: 1px solid $color-gray-extra-light;
+  border-radius: 12px;
+
+  @include flexibleRow(4px, center);
+
+  color: $color-gray;
+
+  transition: 0.3s;
+  cursor: pointer;
+
+  &:not(&--active):hover{
+    background-color: $color-hover;
+  }
+
+  &--active {
+    color: $color-secondary;
+  }
+}

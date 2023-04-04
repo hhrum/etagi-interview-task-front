@@ -1,0 +1,24 @@
+@import "fonts/Rubik/index";
+@import "variables/index";
+@import "mixins/index";
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+
+  font-family: Rubik, sans-serif;
+
+  @each $name, $color in $colors {
+    --#{$name}: $color;
+  }
+}
+
+body {
+  color: $color-black;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  monospace;
+}

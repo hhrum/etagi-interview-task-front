@@ -1,0 +1,12 @@
+.filter-cell {
+  @include flexibleColumn(8px);
+
+  &__title {
+
+  }
+
+  &__inputs {
+    @include flexibleRow(4px, center);
+    color: $color-gray;
+  }
+}

@@ -1,0 +1,6 @@
+.sorting-flats {
+  @include flexibleRow(8px, center);
+  flex-wrap: wrap;
+
+  color: $color-gray;
+}
