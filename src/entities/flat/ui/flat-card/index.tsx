@@ -1,8 +1,7 @@
 import cn from 'classnames'
 
 import { ChildrenComponent } from 'shared/types'
-import { Typography } from 'shared/ui'
-import { Image } from 'shared/ui/image'
+import { Image, Typography } from 'shared/ui'
 
 import { Flat } from '../../model'
 import { FlatInfoCell } from '../flat-info-cell'

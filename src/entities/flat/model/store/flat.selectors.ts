@@ -2,7 +2,15 @@ import { createSelector } from '@reduxjs/toolkit'
 
 import { RootState } from 'store'
 
-export const FlatSelector = (state: RootState) => state.flat
+import { flatDefaultState } from './flat.slice'
+
+export const FlatSelector = (state: RootState) => {
+  if (state.flat === undefined) {
+    return flatDefaultState
+  }
+
+  return state.flat
+}
 
 export const getFlats = createSelector(FlatSelector, (state) => state.items)
 export const getFlatFilter = createSelector(FlatSelector, (flat) => flat.filter)

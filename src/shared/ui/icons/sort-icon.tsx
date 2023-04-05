@@ -9,13 +9,7 @@ export interface SortIconProps extends IconProps {
 }
 
 export function SortIcon({ className = '', variant = 'none' }: SortIconProps) {
-  const ClassName = cn(
-    'sort-icon',
-    {
-      [`sort-icon--${variant}`]: variant !== 'none',
-    },
-    className,
-  )
+  const ClassName = cn('sort-icon', variant !== 'none' && `sort-icon--${variant}`, className)
   return (
     <svg
       className={ClassName}

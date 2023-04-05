@@ -1,6 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit'
 
-import { FlatReducer } from '../entities/flat/model/store'
+import { FlatReducer } from 'entities/flat'
 
 const RootReducer = combineReducers({
   flat: FlatReducer,

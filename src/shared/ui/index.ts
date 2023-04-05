@@ -10,7 +10,8 @@ export * from './icons'
 
 export * from './filter-cell'
 
-export * from './collapse/collapse'
+export * from './pagination'
+export * from './collapse'
 export * from './modal'
 
 export * from './page-layout'

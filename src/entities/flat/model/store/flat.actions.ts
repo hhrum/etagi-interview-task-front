@@ -1,6 +1,7 @@
 import { createAction } from '@reduxjs/toolkit'
 
-import { Sorting } from '../../../../shared/types'
+import { Sorting } from 'shared/types'
+
 import { FlatFilter } from './flat.slice'
 
 const REDUCER_PREFIX = 'flat'

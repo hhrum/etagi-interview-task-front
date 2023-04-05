@@ -1,5 +1,6 @@
-import { ApiClient } from '../../../shared/api'
-import { IPagination, Sorting } from '../../../shared/types'
+import { ApiClient } from 'shared/api'
+import { IPagination, Sorting } from 'shared/types'
+
 import { Flat, FlatFilter } from '../model'
 
 export interface FlatApi {
@@ -47,8 +48,19 @@ export const fetchFlats = async (
 ): Promise<FetchFlatsResult> => {
   const response = await ApiClient.get<FetchFlatsResponse>('/flat', { filter, sorting, page })
 
+  let { pagination } = response.data
+
+  if (pagination === undefined) {
+    pagination = {
+      current: 1,
+      total: 0,
+      next: null,
+      prev: null,
+    }
+  }
+
   return {
     items: mapperFlatsApiToModel(response.data.items),
-    pagination: response.data.pagination,
+    pagination,
   }
 }

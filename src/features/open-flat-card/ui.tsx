@@ -1,10 +1,7 @@
-import { FlatCard } from 'entities/flat'
+import { Flat, FlatCard, FlatModal } from 'entities/flat'
 
-import { Button } from 'shared/ui/button'
-
-import { Flat } from '../../entities/flat/model'
-import { FlatModal } from '../../entities/flat/ui/flat-modal'
-import { useModal } from '../../shared/lib'
+import { useModal } from 'shared/lib'
+import { Button } from 'shared/ui'
 
 export interface OpenFlatCardProps {
   className?: string

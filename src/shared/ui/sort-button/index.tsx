@@ -2,7 +2,7 @@ import cn from 'classnames'
 import { useCallback } from 'react'
 
 import { Sorting, SortingVariant } from '../../types'
-import { SortIcon } from '../icons/sort-icon'
+import { SortIcon } from '../icons'
 import { Typography } from '../typography'
 import './style.scss'
 
@@ -23,13 +23,7 @@ export function SortButton({
   sortingVariant,
   onClick,
 }: SortingButtonProps) {
-  const ClassName = cn(
-    'sort-button',
-    {
-      'sort-button--active': sortingVariant !== 'none',
-    },
-    className,
-  )
+  const ClassName = cn('sort-button', sortingVariant !== 'none' && 'sort-button--active', className)
 
   const handleClick = useCallback(() => {
     let variant: SortingVariant = 'none'

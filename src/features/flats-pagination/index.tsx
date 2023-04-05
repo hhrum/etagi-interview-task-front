@@ -2,8 +2,10 @@ import cn from 'classnames'
 import { useCallback } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { changeCurrentFlatPageAction, getFlatPagination } from '../../entities/flat'
-import { Pagination } from '../../shared/ui/pagination'
+import { changeCurrentFlatPageAction, getFlatPagination } from 'entities/flat'
+
+import { Pagination } from 'shared/ui'
+
 import './style.scss'
 
 export interface FlatsPaginationProps {

@@ -2,12 +2,12 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { FilterFlats } from 'features/filter-flats'
+import { FlatsPagination } from 'features/flats-pagination'
 import { OpenFlatCard } from 'features/open-flat-card'
 import { SortingFlats } from 'features/sorting-flats'
 
-import { fetchFlatsAction, getFlats } from 'entities/flat/model'
+import { fetchFlatsAction, getFlats } from 'entities/flat'
 
-import { FlatsPagination } from '../../../features/flats-pagination'
 import './style.scss'
 
 export function FlatsList() {

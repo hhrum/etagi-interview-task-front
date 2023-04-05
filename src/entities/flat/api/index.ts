@@ -1,1 +1,1 @@
-export * from './fetchFlats'
+export * from './fetch-flats'

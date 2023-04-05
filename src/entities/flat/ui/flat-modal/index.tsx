@@ -1,8 +1,8 @@
 import cn from 'classnames'
 
+import { ChildrenComponent } from 'shared/types'
 import { Image, Modal, ModalController, Typography } from 'shared/ui'
 
-import { ChildrenComponent } from '../../../../shared/types'
 import { FlatInfoCell } from '../flat-info-cell'
 import './style.scss'
 
