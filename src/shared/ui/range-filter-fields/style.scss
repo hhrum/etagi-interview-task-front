@@ -1,0 +1,10 @@
+.range-filter-fields {
+  max-width: 100%;
+  @include flexibleRow(8px, center);
+
+  color: $color-gray;
+
+  &__input {
+    flex: 1 0;
+  }
+}

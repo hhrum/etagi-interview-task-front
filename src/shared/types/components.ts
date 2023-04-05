@@ -17,3 +17,10 @@ export interface Sorting {
 export interface IconProps {
   className?: string
 }
+
+export interface IPagination {
+  current: number
+  prev: number | null
+  total: number | null
+  next: number | null
+}

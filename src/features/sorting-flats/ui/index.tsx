@@ -1,10 +1,10 @@
-import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
+import { changeFlatsSortingAction, getFlatSorting, sortingBy } from 'entities/flat'
 
 import { Sorting } from 'shared/types'
 import { SortButton, Typography } from 'shared/ui'
 
-import { getFlatSorting, sortingChanged } from '../../../entities/flat/model'
 import './style.scss'
 
 export function SortingFlats() {
@@ -12,24 +12,21 @@ export function SortingFlats() {
   const flatSorting = useSelector(getFlatSorting)
 
   const handleChange = (sorting: Sorting) => {
-    dispatch(sortingChanged(sorting))
+    dispatch(changeFlatsSortingAction(sorting))
   }
 
   return (
     <div className="sorting-flats">
       <Typography className="sorting-flats__title">Сортировка:</Typography>
-      <SortButton
-        title="По цене"
-        column="price"
-        sortingVariant={flatSorting?.column === 'price' ? flatSorting?.variant : 'none'}
-        onClick={handleChange}
-      />
-      <SortButton
-        title="По площади"
-        column="area"
-        sortingVariant={flatSorting?.column === 'area' ? flatSorting?.variant : 'none'}
-        onClick={handleChange}
-      />
+      {sortingBy.map((sorting) => (
+        <SortButton
+          key={sorting.column}
+          title={sorting.title}
+          column={sorting.column}
+          sortingVariant={flatSorting?.column === sorting.column ? flatSorting?.variant : 'none'}
+          onClick={handleChange}
+        />
+      ))}
     </div>
   )
 }

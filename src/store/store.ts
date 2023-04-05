@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import createSagaMiddleware from 'redux-saga'
 
-import rootReducer from './root-reducer'
+import RootReducer from './root-reducer'
 import RootWatcher from './root-watcher'
 
 const sagaMiddleware = createSagaMiddleware()
 
 const store = configureStore({
-  reducer: rootReducer,
+  reducer: RootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: false,

@@ -1,8 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { filterChanged, getFlatFilter } from 'entities/flat/model'
-import { FlatFilterModal } from 'entities/flat/ui/flat-filter-modal'
+import { FlatFilterModal, changeFlatsFilterAction, getFlatFilter } from 'entities/flat'
 
 import { useModal } from 'shared/lib'
 import { RangeFilter } from 'shared/types'
@@ -18,32 +17,52 @@ export function FilterFlats() {
   const [priceFilter, setPriceFilter] = useState<RangeFilter | null>(null)
   const [areaFilter, setAreaFilter] = useState<RangeFilter | null>(null)
   const [roomsFilter, setRoomsFilter] = useState<RangeFilter | null>(null)
+  const [floorFilter, setFloorFilter] = useState<RangeFilter | null>(null)
+  const [liveAreaFilter, setLiveAreaFilter] = useState<RangeFilter | null>(null)
+  const [kitchenAreaFilter, setKitchenAreaFilter] = useState<RangeFilter | null>(null)
 
   useEffect(() => {
     setPriceFilter(flatFilter.price)
     setAreaFilter(flatFilter.area)
     setRoomsFilter(flatFilter.rooms)
-  }, [controller.isOpen, flatFilter.area, flatFilter.price, flatFilter.rooms])
+    setFloorFilter(flatFilter.floor)
+    setLiveAreaFilter(flatFilter.liveArea)
+    setKitchenAreaFilter(flatFilter.kitchenArea)
+  }, [controller.isOpen, flatFilter])
 
   const handleReset = useCallback(() => {
     dispatch(
-      filterChanged({
+      changeFlatsFilterAction({
         price: null,
         area: null,
         rooms: null,
+        floor: null,
+        liveArea: null,
+        kitchenArea: null,
       }),
     )
   }, [dispatch])
 
   const handleSubmit = useCallback(() => {
     dispatch(
-      filterChanged({
+      changeFlatsFilterAction({
         price: priceFilter,
         area: areaFilter,
         rooms: roomsFilter,
+        floor: floorFilter,
+        liveArea: liveAreaFilter,
+        kitchenArea: kitchenAreaFilter,
       }),
     )
-  }, [areaFilter, dispatch, priceFilter, roomsFilter])
+  }, [
+    areaFilter,
+    dispatch,
+    floorFilter,
+    kitchenAreaFilter,
+    liveAreaFilter,
+    priceFilter,
+    roomsFilter,
+  ])
 
   return (
     <div className="filter-flats">
@@ -54,11 +73,17 @@ export function FilterFlats() {
       <FlatFilterModal
         controller={controller}
         price={priceFilter}
-        onChangePrice={setPriceFilter}
         area={areaFilter}
-        onChangeArea={setAreaFilter}
         rooms={roomsFilter}
+        floor={floorFilter}
+        liveArea={liveAreaFilter}
+        kitchenArea={kitchenAreaFilter}
+        onChangePrice={setPriceFilter}
+        onChangeArea={setAreaFilter}
         onChangeRooms={setRoomsFilter}
+        onChangeFloor={setFloorFilter}
+        onChangeLiveArea={setLiveAreaFilter}
+        onChangeKitchenArea={setKitchenAreaFilter}
         onReset={handleReset}
         onSubmit={handleSubmit}
       />

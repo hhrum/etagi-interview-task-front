@@ -1,8 +1,16 @@
 import cn from 'classnames'
-import { ChangeEvent, useCallback } from 'react'
+import { useCallback } from 'react'
 
 import { RangeFilter } from 'shared/types'
-import { Button, FilterCell, Modal, ModalController, NumberField, Typography } from 'shared/ui'
+import {
+  Button,
+  Collapse,
+  FilterCell,
+  Modal,
+  ModalController,
+  RangeFilterFields,
+  Typography,
+} from 'shared/ui'
 
 import './style.scss'
 
@@ -11,11 +19,18 @@ export interface FlatFilterModalProps {
   controller: ModalController
 
   price: RangeFilter | null
-  onChangePrice: (filter: RangeFilter | null) => void
   area: RangeFilter | null
-  onChangeArea: (filter: RangeFilter | null) => void
   rooms: RangeFilter | null
+  floor: RangeFilter | null
+  liveArea: RangeFilter | null
+  kitchenArea: RangeFilter | null
+
+  onChangePrice: (filter: RangeFilter | null) => void
+  onChangeArea: (filter: RangeFilter | null) => void
   onChangeRooms: (filter: RangeFilter | null) => void
+  onChangeFloor: (filter: RangeFilter | null) => void
+  onChangeLiveArea: (filter: RangeFilter | null) => void
+  onChangeKitchenArea: (filter: RangeFilter | null) => void
 
   onReset?: () => void
   onSubmit?: () => void
@@ -26,11 +41,18 @@ export function FlatFilterModal({
   controller,
 
   price,
-  onChangePrice,
   area,
-  onChangeArea,
   rooms,
+  floor,
+  liveArea,
+  kitchenArea,
+
+  onChangePrice,
+  onChangeArea,
   onChangeRooms,
+  onChangeFloor,
+  onChangeLiveArea,
+  onChangeKitchenArea,
 
   onReset = () => null,
   onSubmit = () => null,
@@ -87,51 +109,60 @@ export function FlatFilterModal({
 
       <div className="flat-filter-modal__filters">
         <FilterCell title="Цена">
-          <Typography>От</Typography>
-          <NumberField
-            min={0}
-            max={price?.to !== null ? price?.to : undefined}
-            onUpdate={handleChangeRange('from', onChangePrice, price)}
-            value={price?.from !== null && price?.from !== undefined ? price?.from : 0}
-          />
-          <Typography>До</Typography>
-          <NumberField
-            min={price?.from !== null ? price?.from : undefined}
-            onUpdate={handleChangeRange('to', onChangePrice, price)}
-            value={price?.to !== null && price?.to !== undefined ? price?.to : 0}
+          <RangeFilterFields
+            fromValue={price?.from}
+            toValue={price?.to}
+            onUpdateFrom={handleChangeRange('from', onChangePrice, price)}
+            onUpdateTo={handleChangeRange('to', onChangePrice, price)}
           />
         </FilterCell>
         <FilterCell title="Площадь">
-          <Typography>От</Typography>
-          <NumberField
-            min={0}
-            max={area?.to !== null ? area?.to : undefined}
-            onUpdate={handleChangeRange('from', onChangeArea, area)}
-            value={area?.from !== null && area?.from !== undefined ? area?.from : 0}
-          />
-          <Typography>До</Typography>
-          <NumberField
-            min={area?.from !== null ? area?.from : undefined}
-            onUpdate={handleChangeRange('to', onChangeArea, area)}
-            value={area?.to !== null && area?.to !== undefined ? area?.to : 0}
+          <RangeFilterFields
+            fromValue={area?.from}
+            toValue={area?.to}
+            onUpdateFrom={handleChangeRange('from', onChangeArea, area)}
+            onUpdateTo={handleChangeRange('to', onChangeArea, area)}
           />
         </FilterCell>
         <FilterCell title="Кол-во комнат">
-          <Typography>От</Typography>
-          <NumberField
-            min={0}
-            max={rooms?.to !== null ? rooms?.to : undefined}
-            onUpdate={handleChangeRange('from', onChangeRooms, rooms)}
-            value={rooms?.from !== null && rooms?.from !== undefined ? rooms?.from : 0}
-          />
-          <Typography>До</Typography>
-          <NumberField
-            min={rooms?.from !== null ? rooms?.from : undefined}
-            onUpdate={handleChangeRange('to', onChangeRooms, rooms)}
-            value={rooms?.to !== null && rooms?.to !== undefined ? rooms?.to : 0}
+          <RangeFilterFields
+            fromValue={rooms?.from}
+            toValue={rooms?.to}
+            onUpdateFrom={handleChangeRange('from', onChangeRooms, rooms)}
+            onUpdateTo={handleChangeRange('to', onChangeRooms, rooms)}
           />
         </FilterCell>
       </div>
+
+      <Collapse
+        contentClassName="flat-filter-modal__filters"
+        title="Дополнительно"
+      >
+        <FilterCell title="Этаж">
+          <RangeFilterFields
+            fromValue={floor?.from}
+            toValue={floor?.to}
+            onUpdateFrom={handleChangeRange('from', onChangeFloor, floor)}
+            onUpdateTo={handleChangeRange('to', onChangeFloor, floor)}
+          />
+        </FilterCell>
+        <FilterCell title="Жилая площадь">
+          <RangeFilterFields
+            fromValue={liveArea?.from}
+            toValue={liveArea?.to}
+            onUpdateFrom={handleChangeRange('from', onChangeLiveArea, liveArea)}
+            onUpdateTo={handleChangeRange('to', onChangeLiveArea, liveArea)}
+          />
+        </FilterCell>
+        <FilterCell title="Площадь кухни">
+          <RangeFilterFields
+            fromValue={kitchenArea?.from}
+            toValue={kitchenArea?.to}
+            onUpdateFrom={handleChangeRange('from', onChangeKitchenArea, kitchenArea)}
+            onUpdateTo={handleChangeRange('to', onChangeKitchenArea, kitchenArea)}
+          />
+        </FilterCell>
+      </Collapse>
 
       <div className="flat-filter-modal__footer">
         <Button

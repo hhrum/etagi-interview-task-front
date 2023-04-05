@@ -1,11 +1,11 @@
-import { ImageUrl, Price, UniqueId } from 'shared/types'
+import { ImageUrl, UniqueId } from 'shared/types'
 
 export type Area = number
 
 export interface Flat {
   id?: UniqueId
 
-  price: Price
+  price: number
   layoutImage: ImageUrl
 
   floor: number

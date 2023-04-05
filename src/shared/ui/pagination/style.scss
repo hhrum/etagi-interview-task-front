@@ -1,0 +1,44 @@
+.pagination {
+  @include flexibleRow(8px, center);
+
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+
+    @include flexible(center, center);
+
+    color: $color-gray;
+
+    transition: $transition-hover;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+
+    &:active {
+      color: $color-secondary;
+    }
+  }
+
+  &__prev {
+    transform: rotateZ(90deg);
+  }
+
+  &__current {
+    background-color: $color-primary;
+    min-width: 32px;
+    height: 32px;
+    border-radius: 8px;
+
+    @include flexible(center, center);
+
+    color: $color-white;
+  }
+
+  &__next {
+    transform: rotateZ(-90deg);
+  }
+}

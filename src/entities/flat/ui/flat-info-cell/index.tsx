@@ -8,7 +8,7 @@ export interface FlatInfoCellProps {
   className?: string
 
   title: string
-  value: string
+  value: string | number
 }
 
 export function FlatInfoCell({ className = '', title, value }: FlatInfoCellProps) {

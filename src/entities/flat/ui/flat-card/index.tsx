@@ -13,12 +13,8 @@ export interface FlatCardProps {
   actionButton?: ChildrenComponent
   tools?: ChildrenComponent
 
-  flat?: Flat
+  flat: Flat
 }
-
-const mockUrl =
-  'https://cdn.esoft.digital/content/layouts//cluster/layouts/18/0c/e293cb975e87b72b' +
-  '6fba22106422e03e9f8b0c18.png'
 
 export function FlatCard({ className = '', actionButton, tools, flat }: FlatCardProps) {
   const ClassName = cn('flat-card', className)
@@ -28,7 +24,7 @@ export function FlatCard({ className = '', actionButton, tools, flat }: FlatCard
     <div className={ClassName}>
       <Image
         className="flat-card__layout-image"
-        src={mockUrl}
+        src={flat.layoutImage}
       />
       <div className="flat-card__content">
         <div className="flat-card__info">
@@ -40,15 +36,15 @@ export function FlatCard({ className = '', actionButton, tools, flat }: FlatCard
           </Typography>
           <FlatInfoCell
             title="Площадь"
-            value="100 кв.м"
+            value={`${flat.totalArea} кв.м`}
           />
           <FlatInfoCell
             title="Этаж"
-            value="1"
+            value={flat.floor}
           />
           <FlatInfoCell
             title="Комнат"
-            value="2"
+            value={flat.rooms}
           />
         </div>
         <div className={ToolsClassName}>{tools}</div>
@@ -58,7 +54,7 @@ export function FlatCard({ className = '', actionButton, tools, flat }: FlatCard
           className="flat-card__price"
           size={20}
         >
-          2 800 000 ₽
+          {`${flat.price.toLocaleString()} ₽`}
         </Typography>
         <div className="flat-card__button">{actionButton}</div>
       </div>

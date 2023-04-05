@@ -25,18 +25,15 @@ export function NumberField({
       }
 
       if (e.target.value !== undefined) {
-        console.log(min, max, e.target.value)
         if (min !== undefined && +e.target.value < +min) {
           onUpdate(+min)
           return
         }
 
         if (max !== undefined && +e.target.value > +max) {
-          console.log('more', +e.target.value, +max)
           onUpdate(+max)
           return
         }
-        console.log('ok', +e.target.value)
 
         onUpdate(+e.target.value)
       }

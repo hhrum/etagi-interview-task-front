@@ -19,7 +19,7 @@
   }
 
   &__tools {
-    @include flexibleColumn(8px);
+    @include flexibleColumn(12px);
 
     @include adaptiveSm {
       @include flexibleRow(8px, normal, space-between);

@@ -1,0 +1,42 @@
+.collapse {
+  width: 100%;
+  @include flexibleColumn(8px);
+  transition: $transition;
+
+  &__toggle {
+    width: 100%;
+    padding: 4px 8px;
+    border-radius: 12px;
+    border: 1px solid $color-gray-extra-light;
+
+    @include flexibleRow(4px, center, center);
+
+    color: $color-gray;
+
+    cursor: pointer;
+    transition: $transition-hover;
+
+    &:hover {
+      background-color: $color-hover;
+    }
+  }
+
+  &__icon {
+    transition: $transition;
+  }
+
+  &--open &__icon {
+    transform: rotateZ(180deg);
+  }
+
+  &__content-wrapper {
+    width: 100%;
+    overflow: hidden;
+
+    transition: $transition;
+  }
+
+  &__content {
+    width: 100%;
+  }
+}

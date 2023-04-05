@@ -30,6 +30,7 @@
   background-color: $color-white;
   padding: 16px;
   border-radius: 16px 16px 0 0;
+  overflow-y: auto;
 
   @include flexibleColumn(8px);
 
