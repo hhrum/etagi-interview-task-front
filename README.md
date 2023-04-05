@@ -1,46 +1,51 @@
-# Getting Started with Create React App
+# etagi-interview-task-front
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Front-end часть из "Тестового задания" для трудоустройства в "Этажи"
 
-## Available Scripts
+Репозиторий был создан командой `npx create-react-app etagi-interview-task-front --template=typescript`.
+Пакеты, автоматически подтянутые CLI решил не описывать
 
-In the project directory, you can run:
+В очередной раз извиняюсь за задержку, был загружен аутсорс заказами, только в воскресенье нормально освободился, там и смог начать код писать с:
 
-### `npm start`
+В сумме на выполнение задачи ушло около 3 дней.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## архитектура
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+В качестве эксперимента выбрал [FSD](https://feature-sliced.design/ru/docs/get-started/overview), как основу. Результатом в целом доволен.
 
-### `npm test`
+> В некоторых местах code-style может отличаться, т.к. из личного интереса пробывал различные варианты по структурам папок внутри модулей
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+> Местами могут быть кринж моменты, т.к. первое время плохо понимал, как лучше работать с FSD
 
-### `npm run build`
+### немного-об-FSD
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Архитектура позволяет задать строгое направления зависимость. Это достигается путём разбиения структуры папок на 7 слоёв (app, processors, pages, widgets, features, entities, shared), в котором верхний слой (например `app`) может использовать нижний слой (например `entities`), но нижний слой не может использовать верхний. Каждый из слоёв делится на Slices(модули), при этом, модули одного слоя не могут использовать друг друга. Также, слой `shared` не может содержать какую-либо бизнес логику
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### мои-замечания-по-архитектуре
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Как и ожидалось, не очень подходит для быстрых проектов, таких как тестовое задание. Слишком медленный старт был, но под конец выполнения было приятно работать, т.к. была полная осознанность в том, что делаю
 
-### `npm run eject`
+На мой взгляд, она не очень подходит для Redux в связке с Typescript. Т.к. я получал из экземпляра стора `RootState` для типизации моих селекторов, направление зависимостей всегда менялось, куда бы я не попробовал засунуть сам `store`. Проблема решалась бы, если бы я поместил его в `shared`, но этот слой не может содержать какую-либо бизнес-логику. Поэтому я принял решение добавить ещё один слой store, который могли использовать все слои, кроме shared. В целом, решением также доволен
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### о-принятом-нейминге-файлов-и-папок
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Устал от PascalCase в нейминге папок и файлов, поэтому везде использова кебабкейс. Так и импорты красиво выглядят, и читаемость получше, на мой взгляд
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### импорты
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Настроил prettier для сортирвоки импортов в соответствии методологии. + настроил `tsconfig.json`, чтобы в качестве `baseUrl` использовался `src`. Это такой ленивый вариант для алиасов.
 
-## Learn More
+## стек-используемых-технологий
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* [TS](https://www.typescriptlang.org/) - использовал для типизации, без неё уже не то :с
+* [React](https://www.typescriptlang.org/)
+* [React-redux](https://react-redux.js.org/) - использовал в качестве глобального стора
+* [@reduxjs/toolkit](https://react-redux.js.org/) - вспомогательная библиотека для `redux`, которая упрощает работу с ним
+* [Redux-saga](https://redux-saga.js.org/) - использовал для асинхронных взаимодействий со стором. Предпочитаю её больше, чем `redux-thunk`. 
+* [sass](https://www.npmjs.com/package/sass) - препроцессор для `CSS`, на проекте использовался `SCSS`. Аналог `node-sass`, но лучше) (не зависим от используемой версии node.js)
+* [axios](https://www.npmjs.com/package/sass) - использовал для запросов к API, упрощает работу с запросами (осозновал, что достаточно было бы и fetch использовать, но с ней как-то по привычнее
+* [classnames](https://www.npmjs.com/package/classnames) - небольшая библиотека, которая помогает комбинировать классы для компонентов
+* [Eslint](https://eslint.org/)
+* [Prettier](https://prettier.io/)
+* [Craco](https://craco.js.org/) - если правильно всё понимаю, то craco это как обёртка над webpack, которая позволяет переписать его настройки. Дело в том, что при использовании CLI, мы не имеем доступа к конфигурации webpack. Использовал для подключения файлов с SCSS переменными и миксинами во все рабочие файлы. Требуеся для того, чтобы не прописывать import в стилях, когда тебе нужно использовать какую-то глобальную переменную/миксин
 
-To learn React, check out the [React documentation](https://reactjs.org/).
